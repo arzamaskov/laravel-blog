@@ -15,4 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+}); // вызов шаблона
+
+/*
+
+Route::get('/', 'controller@mode'); // вызов контроллера 
+
+*/
