@@ -31,3 +31,23 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
+
+/* Input Placeholders */
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
+input.form-control::-webkit-input-placeholder {
+    color: #ACB5BD;
+}
+input.form-control::-moz-placeholder {
+    color: #ACB5BD;
+}
+input.form-control:-ms-input-placeholder {
+    color: #ACB5BD;
+}
+input.form-control::-ms-input-placeholder {
+    color: #ACB5BD;
+}
+input.form-control::placeholder {
+    color: #ACB5BD;
+}
+
