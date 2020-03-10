@@ -38,6 +38,10 @@
         </div>
       @endfor
 
+      @foreach ($urls as $url)
+        <p>{{ $url }}</p>
+      @endforeach
+
     </div>
   </div>
 </div>
