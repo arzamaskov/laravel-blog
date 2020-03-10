@@ -9,4 +9,9 @@ class InstagramController extends Controller
     public function index() {
         return view('index');
     }
+
+    public function search() {
+        $tag = request('tag');
+        return view('index', ['tag' => $tag]);
+    }
 }

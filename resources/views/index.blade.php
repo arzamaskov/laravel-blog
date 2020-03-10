@@ -5,10 +5,10 @@
 <section class="jumbotron text-center">
   <div class="container">
     <h1>Instagram Grabber</h1>
-    <form>
+    <form action="/search" method="get">
       <div class="form-group">
         <label class="lead text-muted" for="tag">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</label>
-        <input class="form-control form-control-lg text-center" type="text" placeholder="Type here something you are interested in" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Type here something you are interested in'" id="tag" name="tag">
+        <input class="form-control form-control-lg text-center" type="text" placeholder="Type here something you are interested in" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Type here something you are interested in'" id="tag" name="tag" value="{{ $tag ?? '' }}">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
       <button type="submit" class="btn btn-primary">Let's search on Instagram</button>
