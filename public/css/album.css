@@ -1,35 +1,36 @@
 .jumbotron {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  margin-bottom: 0;
-  background-color: #fff;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 0;
+    background-color: #fff;
 }
+
 @media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
+    .jumbotron {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
 }
 
 .jumbotron p:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .jumbotron h1 {
-  font-weight: 300;
+    font-weight: 300;
 }
 
 .jumbotron .container {
-  max-width: 40rem;
+    max-width: 40rem;
 }
 
 footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 footer p {
-  margin-bottom: .25rem;
+    margin-bottom: .25rem;
 }
 
 /* Input Placeholders */
@@ -38,15 +39,19 @@ footer p {
 input.form-control::-webkit-input-placeholder {
     color: #ACB5BD;
 }
+
 input.form-control::-moz-placeholder {
     color: #ACB5BD;
 }
+
 input.form-control:-ms-input-placeholder {
     color: #ACB5BD;
 }
+
 input.form-control::-ms-input-placeholder {
     color: #ACB5BD;
 }
+
 input.form-control::placeholder {
     color: #ACB5BD;
 }
@@ -65,4 +70,8 @@ input.form-control::placeholder {
     transform: translate(-50%, -50%);
     max-height: 100%;
     max-width: 100%;
+}
+
+.msg {
+    min-height: 4em;
 }
