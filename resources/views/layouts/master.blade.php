@@ -16,6 +16,8 @@
 
   </main>
 
+  @include ('layouts.footer')
+
   @include ('layouts.scripts')
 
 </body>

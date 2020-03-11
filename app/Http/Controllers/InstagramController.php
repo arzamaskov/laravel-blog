@@ -28,6 +28,10 @@ class InstagramController extends Controller
                 }
             }
 
-        return view('index', ['tag' => $tag, 'urls' => $urls, 'error_warning' => $error_warning]);
+        return view('index', ['tag' => $tag,
+                'urls' => $urls,
+                'error_warning' => $error_warning
+            ]
+        );
     }
 }
