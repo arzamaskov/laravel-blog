@@ -11,6 +11,10 @@
       <a href="#" class="btn btn-secondary my-2">Secondary action</a>
     </p>
   </div>
+  <form action="{{ action('InstagramController@search') }}" method="get">
+    <input type="text" name="tag" id="tag">
+    <input type="submit" value="Search">
+  </form>
 </section>
 
 <div class="album py-5 bg-light">
