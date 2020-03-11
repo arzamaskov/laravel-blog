@@ -12,59 +12,56 @@ class InstagramController extends Controller
     {
         $number = 9;
         $tag = '';
-        $error_warning = '';
 
-        $params = array(
+        $param = array(
             'number' => $number,
             'tag' => $tag,
-            'error_warning' => $error_warning
         );
 
-        return view('index', $params);
+        return view('index', $param);
     }
 
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
+        $instagram = new Instagram();
 
-            $instagram = new Instagram();
-
-            $urls = array();
-            $tag = request('tag');
-            $number = (int)request('number');
-
-            $error_warning = '';
+        $urls = array();
+        $tag = request('tag');
+        $number = (int)request('number');
 
         try {
-            if ($tag) {
+            if (trim($tag) == '') {
+                $err_msg = 'The request must not be empty. Try again, please.';
+                $param = array(
+                    'number' => $number,
+                    'tag' => $tag,
+                    'err_msg' => $err_msg
+                );
+                return view('error', $param);
+            } else {
                 $medias = $instagram->getMediasByTag($tag, $number);
-                if (empty($medias)) {
-                    $error_warning = 'There is nothing found by';
-                } else {
-                    $media = $medias[0];
+                $error_warning = 'There is nothing found by';
+                $media = $medias[0];
 
-                    foreach ($medias as $media) {
-                        $urls[] = $media->getImageHighResolutionUrl();
-                    }
+                foreach ($medias as $media) {
+                    $urls[] = $media->getImageHighResolutionUrl();
                 }
+                $param = array(
+                    'number' => $number,
+                    'tag' => $tag,
+                    'urls' => $urls
+                );
+
+                return view('show', $param);
             }
-
-            $params = array(
-                'number' => $number,
-                'tag' => $tag,
-                'error_warning' => $error_warning,
-                'urls' => $urls
-            );
-
-            return view('index', $params);
         } catch (\Exception $e) {
-
-            $error_warning = 'There is nothing found by';
-
-            $params = array(
+            $err_msg = "There is nothing found by '$tag'";
+            $param = array(
                 'number' => $number,
                 'tag' => $tag,
-                'error_warning' => $error_warning
+                'err_msg' => $err_msg
             );
-            return view('error', $params);
+            return view('error', $param);
         }
     }
 }
