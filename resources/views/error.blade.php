@@ -38,7 +38,7 @@
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row">
-        @if ($tag)
+        @if (!$error_warning)
             @foreach ($urls as $url)
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
