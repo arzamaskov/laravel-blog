@@ -4,7 +4,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v3.8.6">
-  <title>Album example · Bootstrap</title>
+  <title>Istagram Grabber · Discover your Instagram</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
 
