@@ -6,7 +6,7 @@
     <div class="container">
         <h1>Instagram Grabber</h1>
         <div class="msg">
-            <div class="lead text-muted">That's what we found for you. If you want more, try again.</div>
+            <div class="lead text-muted">That's what we have found for you. If you want more, try again.</div>
         </div>
 
         @include('layouts.form')
