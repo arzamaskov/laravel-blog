@@ -21,4 +21,5 @@
     <small id="emailHelp" class="form-text text-muted mb-3">We'll never share what you type here with anyone
         else.</small>
     <button type="submit" class="btn btn-primary">Let's search on Instagram</button>
+    <a href="/favorites" class="btn btn-outline-primary" role="button">Show favorites pictures</a>
 </form>
