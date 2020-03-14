@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InstagramController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -14,3 +15,5 @@ Route::get('/search', 'InstagramController@search');
 
 // 3. Маршрут для показа избранных
 Route::get('/favorites', 'InstagramController@favorite');
+Route::post('/add', 'InstagramController@add');
+Route::post('/delete', 'InstagramController@delete');

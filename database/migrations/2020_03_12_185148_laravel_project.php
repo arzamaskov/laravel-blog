@@ -17,7 +17,6 @@ class LaravelProject extends Migration
             $table->id();
             $table->string('url');
             $table->string('url_inst');
-            $table->boolean('favorite');
         });
     }
 

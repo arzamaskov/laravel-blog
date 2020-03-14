@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Exception;
 use Illuminate\Http\Request;
 use InstagramScraper\Instagram;
+use App\FavoriteImage;
 
 class InstagramController extends Controller
 {
@@ -71,26 +72,39 @@ class InstagramController extends Controller
     public function favorite ()
     {
         // показывает избранные картинки, урл берем из бд
+        $image_list = FavoriteImage::all();
 
-        // Временно переключаем на главную
-        $number = 9;
-        $tag = 'this is favorites';
-
-        $param = array(
-            'number' => $number,
-            'tag' => $tag,
-        );
-
-        return view('index', $param);
+        return view('favorites', ['image_list' => $image_list, 'number' => 9]);
     }
 
-    public function add ()
-    {
+    public function add (Request $request)
+    {   
+        // $data = $request->url_inst;
+        // if ($request->ajax()) {
+        //     return response()->json([ $data
+        //     ]);
+        // }
+
+        $image = new FavoriteImage;
+        
+        $image->url = $request->url;
+        $image->url_inst = $request->url_inst;
+
         // добавляет урл картинки в бд
+        $image->save();
+
     }
 
-    public function delete ()
-    {
+    public function delete (Request $request)
+    {   
+        // $data = $request->url_inst;
+        // if ($request->ajax()) {
+        //     return response()->json([ $data
+        //     ]);
+        // }
+
         # удаляет урл картинки из бд
+        $url = $request->url;
+        $deletedRows = FavoriteImage::where('url', $url)->delete();
     }
 }
