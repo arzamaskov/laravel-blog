@@ -31,34 +31,27 @@ class InstagramController extends Controller
         $tag = request('tag');
         $number = (int)request('number');
 
+        if (trim($tag) == '') {
+            $err_msg = 'The request must not be empty. Try again, please.';
+            $param = array(
+                'number' => $number,
+                'tag' => $tag,
+                'err_msg' => $err_msg
+            );
+            return view('error', $param);
+        }
+
         try {
-            if (trim($tag) == '') {
-                $err_msg = 'The request must not be empty. Try again, please.';
-                $param = array(
-                    'number' => $number,
-                    'tag' => $tag,
-                    'err_msg' => $err_msg
-                );
-                return view('error', $param);
-            } else {
-                $medias = $instagram->getMediasByTag($tag, $number);
-                $media = $medias[0];
+            $medias = $instagram->getMediasByTag($tag, $number);
 
-                foreach ($medias as $media) {
-                    $img_src_list[] = $media->getImageHighResolutionUrl();
-                    $insta_link_list[] = $media->getLink();
-                }
-
-                $links_list = array_combine($insta_link_list, $img_src_list);
-                $param = array(
-                    'number' => $number,
-                    'tag' => $tag,
-                    'links_list' => $links_list
-                );
-
-                return view('show', $param);
+            foreach ($medias as $media) {
+                $links_list[] = [
+                    'img' => $media->getImageHighResolutionUrl(),
+                    'link' => $media->getLink()
+                ];
             }
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e) {
             $err_msg = "There is nothing found by '$tag'";
             $param = array(
                 'number' => $number,
@@ -67,6 +60,13 @@ class InstagramController extends Controller
             );
             return view('error', $param);
         }
+        $param = array(
+            'number' => $number,
+            'tag' => $tag,
+            'links_list' => $links_list
+            );
+
+            return view('show', $param);
     }
 
     public function favorite ()
@@ -78,7 +78,7 @@ class InstagramController extends Controller
     }
 
     public function add (Request $request)
-    {   
+    {
         // $data = $request->url_inst;
         // if ($request->ajax()) {
         //     return response()->json([ $data
@@ -86,17 +86,19 @@ class InstagramController extends Controller
         // }
 
         $image = new FavoriteImage;
-        
+
         $image->url = $request->url;
         $image->url_inst = $request->url_inst;
 
         // добавляет урл картинки в бд
         $image->save();
 
+        $data = $request->url;
+        return ($data);
     }
 
     public function delete (Request $request)
-    {   
+    {
         // $data = $request->url_inst;
         // if ($request->ajax()) {
         //     return response()->json([ $data
@@ -106,5 +108,8 @@ class InstagramController extends Controller
         # удаляет урл картинки из бд
         $url = $request->url;
         $deletedRows = FavoriteImage::where('url', $url)->delete();
+
+        $data = $request->url;
+        return ($data);
     }
 }
