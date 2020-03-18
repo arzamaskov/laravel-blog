@@ -1,4 +1,5 @@
-$.ajaxSetup({
+$(document).ready(function () {
+    $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
@@ -6,6 +7,7 @@ $.ajaxSetup({
 
 $(".like").on('click', function(event) {
     event.preventDefault();
+    $('#loader').toggleClass('d-none');
 
 
     var url = $(this).parent().find('.img_src').val();
@@ -19,6 +21,7 @@ $(".like").on('click', function(event) {
                 console.log(data);
                 $('input[value="' + data + '"]').siblings('.like').toggleClass('d-none');
                 $('input[value="' + data + '"]').siblings('.dislike').toggleClass('d-none');
+                $('#loader').toggleClass('d-none');
             }
 
     });
@@ -26,6 +29,7 @@ $(".like").on('click', function(event) {
 
 $(".dislike").on('click', function(event) {
     event.preventDefault();
+        $('#loader').toggleClass('d-none');
 
     var url = $(this).parent().find('.img_src').val();
     var url_inst = $(this).parent().find('.insta_link').val();
@@ -38,16 +42,9 @@ $(".dislike").on('click', function(event) {
                 console.log(data);
                 $('input[value="' + data + '"]').siblings('.like').toggleClass('d-none');
                 $('input[value="' + data + '"]').siblings('.dislike').toggleClass('d-none');
+                $('#loader').toggleClass('d-none');
             }
 
     });
 });
-
-$.ajax({
-    beforeSend: function() {
-        $('#loader').show();
-    },
-    complete: function() {
-        $('#loader').hide();
-    }
 });

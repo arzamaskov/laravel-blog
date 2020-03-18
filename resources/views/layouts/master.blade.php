@@ -4,6 +4,7 @@
 @include ('layouts.head')
 
 <body>
+  <div id="loader" class="loader d-none"></div>
   <header>
 
     @include ('layouts.nav')

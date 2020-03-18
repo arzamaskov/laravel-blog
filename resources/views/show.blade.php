@@ -13,9 +13,6 @@
 
     </div>
 </section>
-<div class="container">
-    <img src="img/loading.gif" alt="" id="loader">
-</div>
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
