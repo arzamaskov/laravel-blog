@@ -79,11 +79,9 @@ class InstagramController extends Controller
 
     public function add (Request $request)
     {
-        // $data = $request->url_inst;
-        // if ($request->ajax()) {
-        //     return response()->json([ $data
-        //     ]);
-        // }
+        if(FavoriteImage::find($request->url)) {
+            return NULL;
+        }
 
         $image = new FavoriteImage;
 
