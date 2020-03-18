@@ -26,8 +26,6 @@ class InstagramController extends Controller
     {
         $instagram = new Instagram();
 
-        $img_src_list = array();
-        $insta_link_list = array();
         $tag = request('tag');
         $number = (int)request('number');
 
