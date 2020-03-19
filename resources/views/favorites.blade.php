@@ -4,13 +4,10 @@
 
 <section class="jumbotron text-center">
     <div class="container">
-        <h1>Instagram Grabber</h1>
+        <h1>Your Favorites Pictures</h1>
         <div class="msg">
-            <div class="lead text-muted">That's what we have found for you. If you want more, try again.</div>
+            <div class="lead text-muted">{{ $msg }}</div>
         </div>
-
-        @include('layouts.form')
-
     </div>
 </section>
 
@@ -27,12 +24,17 @@
                     <div class="card-body">
                         <div class="btn-group d-flex justify-content-between align-items-center">
                             <a href="{{ $image->url_inst }}" target="_blank" role="button" class="btn btn-secondary">Instagram</a>
-                            <form>
+                            <form class="form-add">
                                 <input type="hidden" class="img_src" name="url" value="{{ $image->url }}">
                                 <input type="hidden" class="insta_link" name="url_inst" value="{{ $image->url_inst }}">
                                 {{ csrf_field() }}
                                 <button type="submit" class="like btn btn-outline-secondary d-none">Add to
                                 favorite</button>
+                            </form>
+                            <form class="form-delete">
+                                <input type="hidden" class="img_src" name="url" value="{{ $image->url }}">
+                                <input type="hidden" class="insta_link" name="url_inst" value="{{ $image->url_inst }}">
+                                {{ csrf_field() }}
                                 <button type="submit" class="dislike btn btn-outline-secondary">Remove from
                                 favorite</button>
                             </form>

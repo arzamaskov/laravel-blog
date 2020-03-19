@@ -69,10 +69,15 @@ class InstagramController extends Controller
 
     public function favorite ()
     {
-        // показывает избранные картинки, урл берем из бд
         $image_list = FavoriteImage::all();
 
-        return view('favorites', ['image_list' => $image_list, 'number' => 9]);
+        if ($image_list) {
+            $msg = 'There are the pictures that you liked';
+            return view('favorites', ['image_list' => $image_list, 'msg' => $msg]);
+        } else {
+            $msg = 'It seems we cant find any picrures you like to. Please search some pictures and press "Add to favorite" button.';
+            return view('favorites', ['image_list' => $image_list, 'msg' => $msg]);
+        }
     }
 
     public function add (Request $request)
@@ -95,13 +100,7 @@ class InstagramController extends Controller
 
     public function delete (Request $request)
     {
-        // $data = $request->url_inst;
-        // if ($request->ajax()) {
-        //     return response()->json([ $data
-        //     ]);
-        // }
-
-        # удаляет урл картинки из бд
+        // удаляет урл картинки из бд
         $url = $request->url;
         $deletedRows = FavoriteImage::where('url', $url)->delete();
 

@@ -25,12 +25,17 @@
                     <div class="card-body">
                         <div class="btn-group d-flex justify-content-between align-items-center">
                             <a href="{{ $links['link'] }}" target="_blank" role="button" class="btn btn-secondary">Instagram</a>
-                            <form>
+                            <form class="form-add">
                                 <input type="hidden" class="img_src" name="url" value="{{ $links['img'] }}">
                                 <input type="hidden" class="insta_link" name="url_inst" value="{{ $links['link'] }}">
                                 {{ csrf_field() }}
                                 <button type="submit" class="like btn btn-outline-secondary">Add to
                                 favorite</button>
+                            </form>
+                            <form class="form-delete">
+                                <input type="hidden" class="img_src" name="url" value="{{ $links['img'] }}">
+                                <input type="hidden" class="insta_link" name="url_inst" value="{{ $links['link'] }}">
+                                {{ csrf_field() }}
                                 <button type="submit" class="dislike btn btn-outline-secondary d-none">Remove from
                                 favorite</button>
                             </form>
